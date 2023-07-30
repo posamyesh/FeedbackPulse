@@ -22,7 +22,13 @@ module.exports = (app) => {
         })
     )
 
-    app.get('/auth/google/callback', passport.authenticate('google'));
+    app.get(
+        '/auth/google/callback', 
+        passport.authenticate('google'),
+        (req,res) =>{
+            res.redirect('/surveys');
+        }
+        );
     
     app.get('/api/logout', (req, res) => { //To kill the cookie session by using passport, we can delete user data from browser
         req.logOut((err) => { //that means logout
@@ -31,7 +37,8 @@ module.exports = (app) => {
             return res.status(500).send('Error logging out'); //if any error occurs
           }
           console.log('you are logged out');
-          res.send(req.user);
+          //res.send(req.user);
+          res.redirect('/');
         });
     });
       
@@ -39,7 +46,10 @@ module.exports = (app) => {
       
 
     app.get('/api/current_user', (req, res) => { //after we creating a session using passport we can go to this and view our logged in data
-        console.log('hey user ', req.user.googleId);
+        //console.log('hey user ', req.user.googleId);
+        if(req.user == null){
+            console.log("user is not logged in");
+        }
         res.send(req.user); //req means incoming request, req.user will gives incoming user request details in json format
     });
 
