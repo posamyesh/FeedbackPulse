@@ -8,7 +8,7 @@
     "npm": "9.8.0"
   },
   "scripts": {
-    "start": "npm ci && node index.js",
+    "start": "node index.js",
     "server": "nodemon index.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\""
