@@ -62,7 +62,7 @@ const Header = () => {
         id="navbar-default" >
       <ul className="sm:bg-grey-200 font-medium flex flex-col md:flex-row md:space-x-3 md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700 h-full">
         <li>
-          <a href="#" className="text-xl  hover:text-red-500 py-2 px-5 block rounded text-gray-900 hover:bg-white  dark:text-white md:dark:text-blue-500" aria-current="page">Home</a>
+          <Link to= {users.length!==0? "/surveys" : "/"} className="text-xl  hover:text-red-500 py-2 px-5 block rounded text-gray-900 hover:bg-white  dark:text-white md:dark:text-blue-500" aria-current="page">Home</Link>
         </li>
         {users.length !== 0 && (
           <ul className="flex flex-col gap-3  px-5 md:flex-row md:items-center">
